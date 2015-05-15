@@ -1,0 +1,9 @@
+<Files ~ "^\.(htaccess|htpasswd)$">
+deny from all
+</Files>
+Options Indexes
+AuthUserFile /var/www/kickstart/upload/.htpasswd
+AuthName "Please enter your ID and password to upload the file"
+AuthType Basic
+require valid-user 
+order deny,allow
