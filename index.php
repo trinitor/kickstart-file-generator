@@ -12,7 +12,10 @@ while (($line = fgetcsv($data_file, 0, ";")) !== FALSE) {
   $netmask  = htmlspecialchars($line[2]);
   $gateway  = htmlspecialchars($line[3]);
   $dns      = htmlspecialchars($line[4]);
-  echo "<tr><td>$hostname</td><td>$ip</td><td>$netmask</td><td>$gateway</td><td>$dns</td></tr>";
+  $template = htmlspecialchars($line[5]);
+  if ($template == "") { $template = "centos-template (default)"; }
+
+  echo "<tr><td>$hostname</td><td>$ip</td><td>$netmask</td><td>$gateway</td><td>$dns</td><td>$template</td></tr>";
 }
 echo "</table><br><br>";
 fclose($data_file);

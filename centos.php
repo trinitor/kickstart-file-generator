@@ -8,9 +8,15 @@ while (($line = fgetcsv($data_file, 0, ";")) !== FALSE) {
   $netmask  = htmlspecialchars($line[2]);
   $gateway  = htmlspecialchars($line[3]);
   $dns      = htmlspecialchars($line[4]);
+  $template = htmlspecialchars($line[5]);
+  if ($template == "") { 
+     $template = "centos-template.cfg"; 
+  } else {
+     $template = $template . ".cfg";
+  }
 
   if ($input_hostname == $hostname) {
-    $kickstart_template = file_get_contents('centos-template.cfg');
+    $kickstart_template = file_get_contents($template);
 
     $kickstart_template = str_replace('%HOSTNAME%', $hostname, $kickstart_template);
     $kickstart_template = str_replace('%IPADDR%', $ip, $kickstart_template);
