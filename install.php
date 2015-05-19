@@ -25,8 +25,11 @@ while (($line = fgetcsv($data_file, 0, ";")) !== FALSE) {
     $kickstart_template = str_replace('%GATEWAY%',  $gateway, $kickstart_template);
     $kickstart_template = str_replace('%DNS%',      $dns, $kickstart_template);
 
-    #echo nl2br($kickstart_template);
-    echo $kickstart_template;
+    if($input_action == "show") {
+       echo nl2br($kickstart_template);
+    } else {
+       echo $kickstart_template;
+    }
   }
 }
 

@@ -13,7 +13,9 @@ while (($line = fgetcsv($data_file, 0, ";")) !== FALSE) {
   $gateway  = htmlspecialchars($line[3]);
   $dns      = htmlspecialchars($line[4]);
   $template = htmlspecialchars($line[5]);
+
   if ($template == "") { $template = "centos-template (default)"; }
+  if ($hostname != "Hostname") { $hostname = "<a href=install.php?hostname=$hostname&action=show>$hostname</a>"; }
 
   echo "<tr><td>$hostname</td><td>$ip</td><td>$netmask</td><td>$gateway</td><td>$dns</td><td>$template</td></tr>";
 }
