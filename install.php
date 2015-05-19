@@ -1,5 +1,6 @@
 <?php
 $input_hostname = htmlspecialchars($_GET["hostname"]);
+$input_action   = htmlspecialchars($_GET["action"]);
 
 $data_file = fopen('data.csv', 'r');
 while (($line = fgetcsv($data_file, 0, ";")) !== FALSE) {
@@ -10,19 +11,19 @@ while (($line = fgetcsv($data_file, 0, ";")) !== FALSE) {
   $dns      = htmlspecialchars($line[4]);
   $template = htmlspecialchars($line[5]);
   if ($template == "") { 
-     $template = "centos-template.cfg"; 
+    $template = "centos-template.cfg"; 
   } else {
-     $template = $template . ".cfg";
+    $template = $template . ".cfg";
   }
 
   if ($input_hostname == $hostname) {
     $kickstart_template = file_get_contents($template);
 
     $kickstart_template = str_replace('%HOSTNAME%', $hostname, $kickstart_template);
-    $kickstart_template = str_replace('%IPADDR%', $ip, $kickstart_template);
-    $kickstart_template = str_replace('%NETMASK%', $netmask, $kickstart_template);
-    $kickstart_template = str_replace('%GATEWAY%', $gateway, $kickstart_template);
-    $kickstart_template = str_replace('%DNS%', $dns, $kickstart_template);
+    $kickstart_template = str_replace('%IPADDR%',   $ip, $kickstart_template);
+    $kickstart_template = str_replace('%NETMASK%',  $netmask, $kickstart_template);
+    $kickstart_template = str_replace('%GATEWAY%',  $gateway, $kickstart_template);
+    $kickstart_template = str_replace('%DNS%',      $dns, $kickstart_template);
 
     #echo nl2br($kickstart_template);
     echo $kickstart_template;

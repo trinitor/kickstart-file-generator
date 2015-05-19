@@ -21,7 +21,7 @@ generate kickstart files for your linux installation
 ## Usage
 - boot from the CentOS installation iso file (netinstall or full depending on the kickstart file  
 - press tab during the installation selection menu
-- add ks=http://webserver/path/centos.php?hostname=myservername  
+- add ks=http://webserver/path/install.php?hostname=myservername  
   if you configured mod_rewrite corerctly you can use ks=http://webserver/path/server/myservername
 - wait until the installation finished
 

@@ -1,7 +1,7 @@
 <?php
 echo "<html>
 <body>
-<h1>Install CentOS</h1>";
+<h1>Kickstart File Generator</h1>";
 
 echo "<a href=data.csv>data.csv</a><br><br>";
 $data_file = fopen('data.csv', 'r');
